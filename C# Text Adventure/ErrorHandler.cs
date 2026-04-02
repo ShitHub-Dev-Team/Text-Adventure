@@ -8,7 +8,7 @@ namespace TextAdventure;
 
 public static class ErrorHandler
 {
-    public static Version GameVersion = new(0, 1, 1);
+    public static Version GameVersion = new(0, 2, 0);
     private static bool _isStable = true;
     public static void SyntaxError()
     {
@@ -20,7 +20,7 @@ public static class ErrorHandler
 
     public static void InternalError(Exception ex)
     {
-        Console.WriteLine("\x1b[1;38;5;001mInternal Error!\x1b[0m");
+        Console.WriteLine("\x1b[1;38;5;001mInternal Error!" + Color.RESET);
         Console.WriteLine("The game may or may not be playable anymore, you might encounter game-breaking bugs from now on.\n");
 
         Boxing.WriteLineCentered("\x1b[1;38;5;015m" + "ERROR DETAILS" + Color.RESET);
@@ -31,7 +31,9 @@ public static class ErrorHandler
         Boxing.WriteLineCentered("\x1b[1;38;5;015m" + "STACK TRACE" + Color.RESET);
         Console.WriteLine(ex.StackTrace);
 
+        
         Console.WriteLine("\n\n");
+        /*
         Console.WriteLine("To automatically report this error, please press 'Y', or any other key to continue without reporting.\n");
 
         while (true)
@@ -53,6 +55,9 @@ public static class ErrorHandler
         }
 
         _isStable = false;
+        */ // DEMO
+
+        Console.WriteLine("Please report this Bug via a GitHub Issue!\nThank you in advance!"); // DEMO
     }
 
     public static async Task ReportError(Exception ex)

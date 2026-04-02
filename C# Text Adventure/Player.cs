@@ -16,7 +16,7 @@ public class Player
     public double MaxHp { get; private set; }
     public int Money { get; set; } = 10;
     public WeaponItem EquippedWeapon { get; set; } = Weapon.Glock19 as WeaponItem;
-    public ArmorItem EquippedArmor { get; set; } = Armor.NothingArmor as ArmorItem;
+    public ArmorItem? EquippedArmor { get; set; } = null;
 
     public string MoneyText => Color.FORE_WHITE + '$' + Color.FORE_GREEN + Money.ToString() + Color.RESET;
 
@@ -30,7 +30,6 @@ public class Player
         Hp = maxHP;
         Inventory = new(maxWeight);
         CurrentRoom = startRoom;
-        EquippedWeapon = (Weapon.Glock19 is WeaponItem) ? Weapon.Glock19 as WeaponItem : null!;
     }
     public void Status()
     {
@@ -61,7 +60,11 @@ public class Player
         Console.WriteLine($"Carrying {Color.FORE_WHITE}{Inventory.Count}{Color.FORE_CYAN} items " + Color.RESET + "and " + MoneyText + ' ' +
             $"with a total weight of {Color.BACK_WHITE}{Color.FORE_BLACK}{Math.Round(Inventory.InventoryWeight, 2)}/{Math.Round(Inventory.MaxInventoryWeight, 2)}{Color.RESET} kg");
         
-        Console.WriteLine($"Wielding {EquippedWeapon.Name}({Color.FORE_WHITE}{EquippedWeapon.Damage} {Color.FORE_RED}ATK{Color.RESET}) and wearing {EquippedArmor.Name}({Color.FORE_WHITE}{EquippedArmor.Defense} {Color.FORE_BLUE}DEF{Color.RESET})!");
+        Console.WriteLine($"Wielding {EquippedWeapon.Name}({Color.FORE_WHITE}{EquippedWeapon.Damage} {Color.FORE_RED}ATK{Color.RESET}) and wearing " +
+                          (EquippedArmor != null 
+                              ? $"{EquippedArmor.Name}({Color.FORE_WHITE}{EquippedArmor.Defense} {Color.FORE_BLUE}DEF{Color.RESET})" 
+                              : $"{Color.FORE_ORANGE}Nothing{Color.RESET}({Color.FORE_WHITE}0 {Color.FORE_BLUE}DEF{Color.RESET})") 
+                          + "!");
     }
 
     public void Heal(double ammount)
@@ -71,7 +74,7 @@ public class Player
 
     public double Damage(double ammount)
     {
-        double actualDamage = Math.Max(1, ammount - EquippedArmor.Defense);
+        double actualDamage = Math.Max(1, ammount - (EquippedArmor != null ? EquippedArmor.Defense : 0));
         Hp = Math.Max(0, Hp - actualDamage);
         return actualDamage;
     }

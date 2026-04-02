@@ -57,15 +57,14 @@ public static class Program
 
     private static void InitPlayer()
     {
-        Console.WriteLine($"Welcome to the {Color.FORE_LIGHT_GREEN}Text Adventure{Color.RESET}!");
-        Console.Write("Please enter your name: ");
+        Console.Clear();
+        Console.WriteLine($"Welcome to the {Color.FORE_LIGHT_GREEN}Text Adventure{Color.RESET}-Demo!"); // DEMO
+        Console.Write("Please enter your heroes name: ");
 
         string playerName = InputHandler.ReadInput(Color.FORE_LIGHT_CYAN);
         Console.Clear();
 
         Player = new(playerName.Trim(), 100, 10, RoomDefinitions.StartingField);
-
-        PluginManager.Initialize();
 
         RoomDefinitions.InitRooms();
         Player.CurrentRoom = RoomDefinitions.StartingField;
@@ -125,8 +124,10 @@ public static class Program
         {
             if (input.Length == 0) throw new SyntaxErrorException("Command cannot be empty.");
 
+            /*
             if (Commands.TryGetValue(input[0], out Action<string[]>? action)) action(input[1..]);
             else throw new SyntaxErrorException();
+            */
 
             // END OF METHOD when commands are implemented!
                 switch (input[0])

@@ -13,7 +13,7 @@ public static class Weapon
 {
     public static Item Glock19 = new WeaponItem(
         "Glock 19",
-        "Its a Glock 19. From the future. Infinite ammo included.",
+        "Its a Glock 19. Debug weapon. So you can one-shot enemies. Infinite ammo included.",
         0.8,
         0,
         100

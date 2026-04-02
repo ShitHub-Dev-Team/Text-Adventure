@@ -166,13 +166,21 @@ public static class InventoryDisplay
             int infoTextTotalWidth = Console.WindowWidth - 4 - (InfoMode ? infoBoxTotalWidth : 0);
             int infoTextInnerWidth = infoTextTotalWidth - 4;
 
-            ConsoleBuffer[Console.WindowHeight - 6] = ConsoleBuffer[Console.WindowHeight - 6].OverwriteAt(Boxing.WindowCeiling(infoTextInnerWidth, TEXT_BOX_OUTLINE_COLOR), 2);
-            string[] infoArray = Boxing.WrapText(InfoText, infoTextInnerWidth - 2);
+            ConsoleBuffer[Console.WindowHeight - 6] =
+                ConsoleBuffer[Console.WindowHeight - 6].OverwriteAt(
+                    Boxing.WindowCeiling(infoTextInnerWidth, TEXT_BOX_OUTLINE_COLOR), 2);
+
+            string[] infoArray = Boxing.WrapText(InfoText, Math.Max(1, infoTextInnerWidth - 2));
             for (int i = 0; i < 2; i++)
             {
-                ConsoleBuffer[Console.WindowHeight - 5 + i] = ConsoleBuffer[Console.WindowHeight - 5 + i].OverwriteAt(Boxing.WindowWall(infoArray[i], infoTextInnerWidth, TEXT_BOX_OUTLINE_COLOR), 2);
+                string line = (i < infoArray.Length) ? infoArray[i] : string.Empty;
+                ConsoleBuffer[Console.WindowHeight - 5 + i] = ConsoleBuffer[Console.WindowHeight - 5 + i]
+                    .OverwriteAt(Boxing.WindowWall(line, infoTextInnerWidth, TEXT_BOX_OUTLINE_COLOR), 2);
             }
-            ConsoleBuffer[Console.WindowHeight - 3] = ConsoleBuffer[Console.WindowHeight - 3].OverwriteAt(Boxing.WindowFloor(infoTextInnerWidth, TEXT_BOX_OUTLINE_COLOR), 2);
+
+            ConsoleBuffer[Console.WindowHeight - 3] =
+                ConsoleBuffer[Console.WindowHeight - 3].OverwriteAt(
+                    Boxing.WindowFloor(infoTextInnerWidth, TEXT_BOX_OUTLINE_COLOR), 2);
         }
 
         // Draw the final buffer
@@ -214,7 +222,7 @@ public static class InventoryDisplay
         }
         else if (targetItem is ArmorItem armorItem)
         {
-            p.Inventory.Add(p.EquippedArmor);
+            if (p.EquippedArmor != null) p.Inventory.Add(p.EquippedArmor);
             p.EquippedArmor = armorItem;
             p.Inventory.RemoveAt(SelectedItem);
 

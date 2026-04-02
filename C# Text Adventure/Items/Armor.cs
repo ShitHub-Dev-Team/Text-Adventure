@@ -32,11 +32,4 @@ public static class Armor
         110,
         14
     );
-    public static Item NothingArmor = new ArmorItem(
-        "Nothing",
-        "Its nothing :O",
-        0,
-        0,
-        0
-    );
 }

@@ -69,7 +69,7 @@ public static class PluginManager
             }
         }
 
-        File.WriteAllBytes(pluginConfigPath, Encoding.UTF8.GetBytes(JsonSerializer.Serialize(pluginConfig)));
+        File.WriteAllText(pluginConfigPath, JsonSerializer.Serialize(pluginConfig));
     }
     public static void PluginManagerDisplay()
     {
@@ -78,6 +78,7 @@ public static class PluginManager
         {
             Console.Clear();
             // Draw
+            Console.WriteLine("Plugins are a WIP feature that DO NOT WORK in this demo."); // DEMO
             for (int i = 0; i < Plugins.Count; i++)
             {
                 if(i == selectedIndex)
