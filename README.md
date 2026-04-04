@@ -31,6 +31,13 @@ Playing the game is pretty simple. Just write what you want to do. Like `go nort
 To get a better understanding of the commands, you can always go to the help page by typing `help`, where all commands, parameters and variations are listed.
 
 <h2 align="center">
+  <span>Demo-Information</span>
+</h2>
+This is a demo, a bunch of gameplay mechanics cramped together. You can "finish" this game in about 1 minute if you know what to do and where to go.
+If you play this, you might find yourself not knowing what to do. This is because there isn't anything to do really.
+As of now, all you can really do is pick up some of the items lying arround, kill the only enemy that exists... yeah that's it.
+
+<h2 align="center">
   <span>What's next</span>
 </h2>
 Since I most likeley won't be able to finish this game before Flavortown ends, I instead want to turn it into a demo that presents the different game systems I have created.\
