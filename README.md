@@ -2,7 +2,7 @@
   <span>C# Text Adventure</span>
 </h1>
 
-[![Build](https://img.shields.io/github/actions/workflow/status/Joelbu537/C-Text-Adventure/dotnet-desktop.yml?branch=master&style=for-the-badge&label=build&logo=github)](https://github.com/Joelbu537/C-Text-Adventure/actions/workflows/dotnet-desktop.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/Joelbu537/C-Text-Adventure/dotnet-desktop.yml?branch=master&style=for-the-badge&label=build&logo=github)](https://github.com/Joelbu537/C-Text-Adventure/actions/workflows/dotnet-desktop.yml) <- ignore that
 [![License](https://img.shields.io/badge/License-GPL_v3-blue?style=for-the-badge&logo=readthedocs&logoColor=white)](https://www.gnu.org/licenses/gpl-3.0)
 [![Flavortown](https://img.shields.io/badge/Flavortown-Project-red?style=for-the-badge)](https://flavortown.hackclub.com/projects/9276)
 [![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?style=for-the-badge)](https://dotnet.microsoft.com/)
